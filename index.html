@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UEC Launcher</title>
+    <link rel="shortcut icon" href="assets/gc.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>UEC Launcher</h1>
+            <div class="header-buttons">
+                <button onclick="document.documentElement.requestFullscreen();">
+                    <img src="assets/fullscreen.png" width="25px" height="25px" alt="Fullscreen">
+                </button>
+                <button onclick="document.exitFullscreen();">
+                    <img src="assets/close.png" width="25px" height="25px" alt="Close">
+                </button>
+            </div>
+        </header>
+        <div class="main">
+            <aside class="sidebar">
+                <nav>
+                    <ul>
+                        <li>
+                            <button class="settings-button">
+                                <img src="assets/settings.png" alt="Settings" onclick="openSettingsModal();">
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+            <section class="content">
+                <div class="client-launch">
+                    <button class="launch-button" onclick="window.location.href=localStorage.getItem('client');">Launch</button>
+                </div>
+                <div class="partner-servers-ads">
+                    <div class="clients">
+                        <h2>Clients</h2>
+                        <button onclick="localStorage.setItem('client','/clients/bettereagler.html');">BetterEagler</button>
+                        <button onclick="localStorage.setItem('client','/clients/dragonx.html');">DragonX</button>
+                        <button onclick="localStorage.setItem('client','/clients/eaglercraft.html');">Eaglercraft(1.5.2)</button>
+                        <button onclick="localStorage.setItem('client','/clients/eaglercraftx.html');">EaglercraftX (1.8.9)</button>
+                        <button onclick="localStorage.setItem('client','/clients/eaglerforge.html');">EaglerForge</button>
+                        <button onclick="localStorage.setItem('client','/clients/resent.html');">Resent</button>
+                        <button onclick="localStorage.setItem('client','/clients/shadow.html');">Shadow</button>
+                        <button onclick="localStorage.setItem('client','/clients/uwu.html');">UwU</button>
+                    </div>
+                    <div class="advertising-space">
+                        <h2>Ads</h2>
+                        <div class="ad">
+                            <h4>Air is available for free at https://air.com!</h4>
+                            <img src="assets/air.jpg" width="150px" height="150px" alt="Ad 1">
+                            <h4>Eaglercraft is free! Imagine paying Minecraft lololololol</h4>
+                            <img src="assets/minecraft.png" width="150px" height="150px" alt="Ad 2">
+                            <h4>Join DevDispatch! https://discord.gg/devdispatch</h4>
+                            <h4>https://discord.gg/yapGMMSC contains the word yap</h4>
+                            <h4>https://github.com/lax1dude is pretty cool</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="partner-servers">
+                    <h2>Partner Servers</h2>
+                    <ul>
+                        <li>https://discord.gg/devdispatch <button onclick="window.location.href='https://discord.gg/devdispatch'">Connect</button></li>
+                        <li>https://entrpix.me <button onclick="window.location.href='https://entrpix.me'">Connect</button></li>
+                        <li>https://eaglercraft.com <button onclick="window.location.href='https://eaglercraft.com'">Connect</button></li>
+                        <li>https://discord.gg/yapGMMSC <button onclick="window.location.href='https://discord.gg/yapGMMSC'">Connect</button></li>
+                        <li>https://claireoni.xyz/ <button onclick="window.location.href='https://claireoni.xyz/'">Connect</button></li>
+                        <li>https://github.com/lax1dude <button onclick="window.location.href='https://github.com/lax1dude'">Connect</button></li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSettingsModal()">&times;</span>
+            <h1>Settings</h1>
+            <div class="setting">
+                <p>Title</p>
+                <input type="text" id="titleInput" placeholder="Enter new title">
+                <button onclick="saveTitle()">Save Title</button>
+            </div>
+            <div class="setting">
+                <p>Icon</p>
+                <input type="text" id="iconInput" placeholder="Enter icon URL">
+                <button onclick="saveIcon()">Save Icon</button>
+            </div>
+            <button onclick="ab()" class="ab">Open in about:blank</button>
+        </div>
+    </div>
+    <script src="tab.js"></script>
+</body>
+</html>

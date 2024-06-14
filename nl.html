@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UEC Launcher</title>
+    <link rel="shortcut icon" href="assets/gc.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Stijl de downloads sectie */
+        .downloads {
+            background-color: #373A4F; /* Grijzig achtergrond */
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .downloads h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .downloads .download-button {
+            background-color: #D74757; /* Roodachtig achtergrond */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .downloads .download-button:hover {
+            background-color: #C43544; /* Donkerroodachtig achtergrond bij hover */
+        }
+
+        .downloads .buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>UEC Launcher</h1>
+            <div class="header-buttons">
+                <button onclick="document.documentElement.requestFullscreen();">
+                    <img src="assets/fullscreen.png" width="25px" height="25px" alt="Volledig scherm">
+                </button>
+                <button onclick="document.exitFullscreen();">
+                    <img src="assets/close.png" width="25px" height="25px" alt="Sluiten">
+                </button>
+            </div>
+        </header>
+        <div class="main">
+            <aside class="sidebar">
+                <nav>
+                    <ul>
+                        <li>
+                            <button class="settings-button">
+                                <img src="assets/settings.png" alt="Instellingen" onclick="openSettingsModal();">
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+            <section class="content">
+                <div class="client-launch">
+                    <button class="launch-button" onclick="window.location.href=localStorage.getItem('client');">Start</button>
+                </div>
+                <div class="partner-servers-ads">
+                    <div class="clients">
+                        <h2>Clients</h2>
+                        <button onclick="localStorage.setItem('client','/clients/bettereagler.html');">BetterEagler</button>
+                        <button onclick="localStorage.setItem('client','/clients/dragonx.html');">DragonX</button>
+                        <button onclick="localStorage.setItem('client','/clients/eaglercraft.html');">Eaglercraft(1.5.2)</button>
+                        <button onclick="localStorage.setItem('client','/clients/eaglercraftx.html');">EaglercraftX (1.8.9)</button>
+                        <button onclick="localStorage.setItem('client','/clients/eaglerforge.html');">EaglerForge</button>
+                        <button onclick="localStorage.setItem('client','/clients/resent.html');">Resent</button>
+                        <button onclick="localStorage.setItem('client','/clients/shadow.html');">Shadow</button>
+                        <button onclick="localStorage.setItem('client','/clients/uwu.html');">UwU</button>
+                    </div>
+                    <div class="advertising-space">
+                        <h2>Advertenties</h2>
+                        <div class="ad">
+                            <h4>Join onze Discord op https:https://discord.gg/ydwFpUyMnv!</h4>
+                            <h4>Eaglercraft is gratis! Stel je voor dat je voor Minecraft betaalt lololololol</h4>
+                            <img src="assets/minecraft.png" width="150px" height="150px" alt="Advertentie 2">
+                        </div>
+                    </div>
+                </div>
+                <div class="partner-servers">
+                    <h2>Partner Servers</h2>
+                    <ul>
+                        <h4>Join Mystic Knights SMP!!!</h4>
+                        <li>https://discord.gg/Fzzx7zVuHz <button onclick="window.location.href='https://discord.gg/Fzzx7zVuHz'">Verbinden</button></li>
+                        <h4>Join CheeseburgerSMP!!!</h4>
+                        <li>https://discord.gg/Vddar7xtmr <button onclick="window.location.href='https://discord.gg/Vddar7xtmr'">Verbinden</button></li>
+                        <h4>Join SymbioteSMP!!!</h4>
+                        <li>https://discord.gg/symbiotesmp <button onclick="window.location.href='https://discord.gg/symbiotesmp'">Verbinden</button></li>
+                        <h4>Join WisteriaSMP!!!</h4>
+                        <li>https://discord.gg/gVVVR3udKr <button onclick="window.location.href='https://discord.gg/gVVVR3udKr'">Verbinden</button></li>
+                        <h4>Join ZelimMC!!!</h4>
+                        <li>https://discord.gg/ZKze5W6vFw <button onclick="window.location.href='https://discord.gg/ZKze5W6vFw'">Verbinden</button></li>
+                    </ul>
+                </div>
+                <div class="downloads">
+                    <h2>Downloads</h2>
+                    <div class="buttons-container">
+                        <a href="/clients/dragonx.html" class="download-button" download>DragonX</a>
+                        <a href="/clients/uwu.html" class="download-button" download>UwU</a>
+                        <a href="/clients/bettereagler.html" class="download-button" download>BetterEagler</a>
+                        <a href="/clients/shadow.html" class="download-button" download>Shadow</a>
+                        <a href="/clients/resent.html" class="download-button" download>Resent</a>
+                        <a href="/clients/eaglercraftx.html" class="download-button" download>1.8.8</a>
+                        <a href="/clients/eaglerforge.html" class="download-button" download>EaglerForge</a>
+                        <a href="/clients/eaglercraft.html" class="download-button" download>1.5.2</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSettingsModal()">&times;</span>
+            <h1>Instellingen</h1>
+            <div class="setting">
+                <p>Titel</p>
+                <input type="text" id="titleInput" placeholder="Voer nieuwe titel in">
+                <button onclick="saveTitle()">Titel Opslaan</button>
+            </div>
+            <div class="setting">
+                <p>Icon</p>
+                <input type="text" id="iconInput" placeholder="Voer icon URL in">
+                <button onclick="saveIcon()">Icon Opslaan</button>
+            </div>
+            <button onclick="ab()" class="ab">Openen in about:blank</button>
+        </div>
+    </div>
+    <script src="tab.js"></script>
+</body>
+</html>

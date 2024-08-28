@@ -7,22 +7,64 @@
     <link rel="shortcut icon" href="assets/gc.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Style the downloads section */
-        .downloads {
-            background-color: #373A4F; /* Grayish background */
+        body {
+            font-family: 'Minecraft', sans-serif; /* Optional: Change to a Minecraft-like font */
+            background-image: url('assets/minecraft_background.png'); /* Set a Minecraft-themed background */
+            background-size: cover;
+            color: #E3E3E3; /* Bright text color for visibility */
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
             padding: 20px;
+        }
+
+        .header {
+            background-color: #4E7C44; /* Dark green header */
+            padding: 15px;
             border-radius: 10px;
+            text-align: center;
+        }
+
+        .header-buttons button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .header-buttons img {
+            width: 25px;
+            height: 25px;
+        }
+
+        .main {
+            display: flex;
             margin-top: 20px;
         }
 
-        .downloads h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: white;
+        aside.sidebar {
+            width: 20%;
+            background-color: #2B2B2B; /* Dark sidebar */
+            padding: 10px;
+            border-radius: 10px;
+            margin-right: 20px;
         }
 
-        .downloads .download-button {
-            background-color: #D74757; /* Reddish background */
+        aside.sidebar nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .content {
+            flex: 1; /* Allow the content to take remaining space */
+            background-color: rgba(45, 45, 45, 0.8); /* Slightly transparent background */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .download-button, .launch-button, .settings-button {
+            background-color: #60C63C; /* Light green buttons */
             color: white;
             border: none;
             padding: 10px 20px;
@@ -32,16 +74,68 @@
             font-size: 16px;
             text-decoration: none;
             display: inline-block;
+            transition: background-color 0.3s;
         }
 
-        .downloads .download-button:hover {
-            background-color: #C43544; /* Darker reddish background on hover */
+        .download-button:hover, .launch-button:hover, .settings-button:hover {
+            background-color: #4EAB2B; /* Darker green on hover */
         }
 
-        .downloads .buttons-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+        h2, h4 {
+            text-align: center;
+            color: #FFD700; /* Golden color for headers */
+        }
+
+        .downloads {
+            background-color: rgba(55, 58, 79, 0.7); /* Semi-transparent background */
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .advertising-space {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .advertising-space img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #303030;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be anything you want */
+            color: #E3E3E3; /* Bright text color */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -51,10 +145,10 @@
             <h1>UEC Launcher</h1>
             <div class="header-buttons">
                 <button onclick="document.documentElement.requestFullscreen();">
-                    <img src="assets/fullscreen.png" width="25px" height="25px" alt="Fullscreen">
+                    <img src="assets/fullscreen.png" alt="Fullscreen">
                 </button>
                 <button onclick="document.exitFullscreen();">
-                    <img src="assets/close.png" width="25px" height="25px" alt="Close">
+                    <img src="assets/close.png" alt="Close">
                 </button>
             </div>
         </header>
@@ -63,8 +157,8 @@
                 <nav>
                     <ul>
                         <li>
-                            <button class="settings-button">
-                                <img src="assets/settings.png" alt="Settings" onclick="openSettingsModal();">
+                            <button class="settings-button" onclick="openSettingsModal();">
+                                <img src="assets/settings.png" alt="Settings">
                             </button>
                         </li>
                     </ul>
@@ -79,7 +173,7 @@
                         <h2>Clients</h2>
                         <button onclick="localStorage.setItem('client','/clients/bettereagler.html');">BetterEagler</button>
                         <button onclick="localStorage.setItem('client','/clients/dragonx.html');">DragonX</button>
-                        <button onclick="localStorage.setItem('client','/clients/eaglercraft.html');">Eaglercraft(1.5.2)</button>
+                        <button onclick="localStorage.setItem('client','/clients/eaglercraft.html');">Eaglercraft (1.5.2)</button>
                         <button onclick="localStorage.setItem('client','/clients/eaglercraftx.html');">EaglercraftX (1.8.9)</button>
                         <button onclick="localStorage.setItem('client','/clients/eaglerforge.html');">EaglerForge</button>
                         <button onclick="localStorage.setItem('client','/clients/resent.html');">Resent</button>
@@ -89,9 +183,9 @@
                     <div class="advertising-space">
                         <h2>Ads</h2>
                         <div class="ad">
-                            <h4>Join Our Discord at https:https://discord.gg/ydwFpUyMnv!</h4>
-                            <h4>Eaglercraft is free! Imagine paying Minecraft lololololol</h4>
-                            <img src="assets/minecraft.png" width="150px" height="150px" alt="Ad 2">
+                            <h4>Join Our Discord: <a href="https://discord.gg/ydwFpUyMnv" style="color: #FFD700;">https://discord.gg/ydwFpUyMnv</a></h4>
+                            <h4>Eaglercraft is free! Imagine paying Minecraft!</h4>
+                            <img src="assets/minecraft.png" alt="Minecraft Ad">
                         </div>
                     </div>
                 </div>
@@ -99,15 +193,15 @@
                     <h2>Partner Servers</h2>
                     <ul>
                         <h4>Join Mystic Knights SMP!!!</h4>
-                        <li>https://discord.gg/Fzzx7zVuHz <button onclick="window.location.href='https://discord.gg/Fzzx7zVuHz'">Connect</button></li>
+                        <li>https://discord.gg/Fzzx7zVuHz <button class="connect-button" onclick="window.location.href='https://discord.gg/Fzzx7zVuHz'">Connect</button></li>
                         <h4>Join CheeseburgerSMP!!!</h4>
-                        <li>https://discord.gg/Vddar7xtmr <button onclick="window.location.href='https://discord.gg/Vddar7xtmr'">Connect</button></li>
+                        <li>https://discord.gg/Vddar7xtmr <button class="connect-button" onclick="window.location.href='https://discord.gg/Vddar7xtmr'">Connect</button></li>
                         <h4>Join SymbioteSMP!!!</h4>
-                        <li>https://discord.gg/symbiotesmp <button onclick="window.location.href='https://discord.gg/symbiotesmp'">Connect</button></li>
+                        <li>https://discord.gg/symbiotesmp <button class="connect-button" onclick="window.location.href='https://discord.gg/symbiotesmp'">Connect</button></li>
                         <h4>Join WisteriaSMP!!!</h4>
-                        <li>https://discord.gg/gVVVR3udKr <button onclick="window.location.href='https://discord.gg/gVVVR3udKr'">Connect</button></li>
+                        <li>https://discord.gg/gVVVR3udKr <button class="connect-button" onclick="window.location.href='https://discord.gg/gVVVR3udKr'">Connect</button></li>
                         <h4>Join ZelimMC!!!</h4>
-                        <li>https://discord.gg/ZKze5W6vFw <button onclick="window.location.href='https://discord.gg/ZKze5W6vFw'">Connect</button></li>
+                        <li>https://discord.gg/ZKze5W6vFw <button class="connect-button" onclick="window.location.href='https://discord.gg/ZKze5W6vFw'">Connect</button></li>
                     </ul>
                 </div>
                 <div class="downloads">
@@ -118,9 +212,9 @@
                         <a href="/clients/bettereagler.html" class="download-button" download>BetterEagler</a>
                         <a href="/clients/shadow.html" class="download-button" download>Shadow</a>
                         <a href="/clients/resent.html" class="download-button" download>Resent</a>
-                        <a href="/clients/eaglercraftx.html" class="download-button" download>1.8.8</a>
+                        <a href="/clients/eaglercraftx.html" class="download-button" download>EaglercraftX (1.8.9)</a>
                         <a href="/clients/eaglerforge.html" class="download-button" download>EaglerForge</a>
-                        <a href="/clients/eaglercraft.html" class="download-button" download>1.5.2</a>
+                        <a href="/clients/eaglercraft.html" class="download-button" download>Eaglercraft (1.5.2)</a>
                     </div>
                 </div>
             </section>
